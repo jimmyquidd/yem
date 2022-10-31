@@ -1510,7 +1510,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>YEM: ‘Your View on Science’ ölçeğinden elde edilen 2015 PISA Turkiye örneklemi ile bir örnek çalışma.
-Bu çalışma Gazi üniversitesi’nde ‘Yapısal Eşitlik Modellemeleri’ dersi kapsamında rapor olarak hazırlanmıştır.</p></p>
+Bu çalışma Gazi üniversitesi’nde Doç. Dr. Emine Önen tarafından verilen ‘Yapısal Eşitlik Modellemeleri’ dersi kapsamında rapor olarak hazırlanmıştır.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1540,9 +1540,9 @@ Bu çalışma Gazi üniversitesi’nde ‘Yapısal Eşitlik Modellemeleri’ der
 </ul>
 </nav>
 </div>
-<p>Bu çalışmada PISA 2015 <a href="https://www.oecd.org/pisa/data/CY6_QST_MS_STQ_PBA_Final.pdf">“student questionnaire: paper based verison”</a> içerisindeki en son alt ölçek olan ‘Your View on Science’ ölçeğinden elde edilen veriler kullanılmıştır. Türkiye örnekleminden faydalanılmıştır. Bu örneklem ile bahsi geçen ölçeğin yapısal eşitlik modelleri oluşturulmuş ve karşılaştırılmıştır. Adım adım veri setinin R ile analize hazır hale getirilmesi anlatılmaktadır. Doğrudan analiz ile ilgileniyorsanız aşağıda <strong>‘Analiz Süreci’</strong> başlığına ilerleyiniz.</p>
+<p>Bu çalışmada PISA 2015 <a href="https://www.oecd.org/pisa/data/CY6_QST_MS_STQ_PBA_Final.pdf">“student questionnaire: paper based verison”</a> içerisindeki en son alt ölçek olan ‘Your View on Science’ ölçeğinden elde edilen veriler kullanılmıştır. Türkiye örnekleminden faydalanılmıştır. Bu örneklem ile bahsi geçen ölçeğin yapısal eşitlik modelleri oluşturulmuş ve karşılaştırılmıştır. Pre-processing süreci başlığı altında veri setinin R ile analize hazır hale getirilmesi anlatılmaktadır. Doğrudan analiz ile ilgileniyorsanız aşağıda <strong>‘Analiz Süreci’</strong> başlığına ilerleyiniz.</p>
 <h2 id="pre-processing-süreci">Pre-processing süreci</h2>
-<p>Öncelikle <a href="https://www.oecd.org/pisa/data/2015database/">OECD</a> tarafından yayınlanan veri setini <a href="https://webfs.oecd.org/pisa/PUF_SPSS_COMBINED_CMB_STU_QQQ.zip">şuradan</a> indiriyoruz. İndirilen bu dosya .sav uzantılı bbir dosya. Bu tür dosyaları açmak için <code>haven</code> paketi <code>read_sav</code> fonksiyonundan faydalanabiliriz. Veri setinin tamamına ihtiyacımız yok, zaten oldukça büyük bir veri. Ülke değilşkeni ve ilgili ölçeğin maddeleri yeterli olacaktır. İndirdiğimiz .sav uzantılı dosyayı <em>working directory’</em>mize taşıdıktan sonra çalıştıracağımız kod satırı şunlar:</p>
+<p>Öncelikle <a href="https://www.oecd.org/pisa/data/2015database/">OECD</a> tarafından yayınlanan veri setini <a href="https://webfs.oecd.org/pisa/PUF_SPSS_COMBINED_CMB_STU_QQQ.zip">şuradan</a> indiriyoruz. İndirilen bu dosya .sav uzantılı bbir dosya. Bu tür dosyaları açmak için <code>haven</code> paketi <code>read_sav</code> fonksiyonundan faydalanabiliriz. Veri setinin tamamına ihtiyacımız yok, zaten oldukça büyük bir veri. Ülke değişkeni ve ilgili ölçeğin maddeleri yeterli olacaktır. İndirdiğimiz .sav uzantılı dosyayı <em>working directory’</em>mize taşıdıktan sonra çalıştıracağımız kod satırı şunlar:</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -1593,7 +1593,7 @@ Show code
 </div>
 </details>
 </div>
-<p>Ülke değişkenine artık ihtiyacımız yok. O nedenle veri setimizi sadece ölçek maddelerini içerecek şekilde yeniden tanımlayalım:</p>
+<p>Ülke değişkeni ile sadece Türkiye örneklemini filtreledikten sonra bu değişkene artık ihtiyacımız kalmayacak. O nedenle filtrelemeyi yapıp veri setimizi sadece ölçek maddelerini içerecek şekilde yeniden tanımlayalım:</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -1617,7 +1617,7 @@ Show code
 </details>
 </div>
 <h2 id="analiz-süreci">Analiz Süreci</h2>
-<p>İlgili ölçekten elde edilen veriyi <a href="https://drive.google.com/file/d/1HVNyhK1J6PmwS04_W4B7LCVXEDakFShg/view?usp=sharing">.csv uzantılı dosya</a> olarak indirebilirsiniz. Bunu read.csv fonksiyonu ile R ortamına aktarabilirsiniz. Veri setimiz hazır. Analizimizde öncelikle doğrulayı faktör analizi kullanacağız. Daha sonra da bi-faktör modelleme yapacağız. Veri setimizi tekrar yükleyelim:</p>
+<p>İlgili ölçekten elde edilen veriyi <a href="https://drive.google.com/file/d/1HVNyhK1J6PmwS04_W4B7LCVXEDakFShg/view?usp=sharing">.csv uzantılı dosya</a> olarak indirebilirsiniz. Bunu read.csv fonksiyonu ile R ortamına aktarabilirsiniz. Veri setimiz hazır. Analizimizde öncelikle doğrulayıcı faktör analizi kullanacağız. Daha sonra da bi-faktör modelleme yapacağız. Veri setimizi tekrar yükleyelim. </p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2078,7 +2078,8 @@ Show code
 </div>
 <p>Bu çıktılar incelendiğinde de bi faktör modelin verimize DWLS model kadar uyumlu olmadığı görülmektedir. Bu nedenle DWLS modelin en uyumlu model olduğu düşünülmektedir. Bu modelin çıktılarını tablolaştıralım.</p>
 <h3 id="en-uyumlu-modeldwls-çıktıları">EN UYUMLU MODEL:DWLS çıktıları</h3>
-<p>NOT: Faktör varyansları sabitlenerek model oluşturulduğu için faktör varyansları tablosu raporlaştırılmamıştır.</p>
+<p>NOT-1: Faktör varyansları sabitlenerek model oluşturulduğu için faktör varyansları tablosu raporlaştırılmamıştır.</p>
+<p>NOT-2: Bu bölümdeki tablolar, SPSS'e ücretesiz bir alternatif olan ve R altyapısı ile analiz yapan JASP yazılımı ile hazırlanmıştır.</p>
 <h4 id="model-uyum-indeksleri">Model uyum indeksleri</h4>
 <p><img src="images/paste-E29C1283.png" /></p>
 <p>Parametre Tahminleri</p>
